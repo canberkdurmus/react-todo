@@ -1,39 +1,35 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Checkbox, IconButton } from 'evergreen-ui'
 
 export class TodoItem extends Component {
     getStyle = () => {
         return {
-            backgroundColor: '#f4f4f4',
-            padding: '10px',
-            borderBottom: '1px #ccc dotted',
             textDecoration: this.props.todo.completed ? 'line-through' : 'none',
+            display: 'inline-block',
+            marginLeft: '10px',
+            height: '100%',
         }
     }
 
     render() {
         const { id, title, completed } = this.props.todo;
         return (
-            <div style={this.getStyle()}>
-                <p>
-                    <input type='checkbox' checked={completed} onChange={this.props.markComplete.bind(this, id)} /> {' '}
+            <div style={{ backgroundColor: '#f4f4f4', padding: '2px', marginBottom: '4px', borderBottom: '1px #ccc dotted' }}>
+                <div style={{ display: 'inline-block', marginLeft: '10px', }}>
+                    <Checkbox checked={completed} onChange={this.props.markComplete.bind(this, id)} />
+                </div>
+                <p style={this.getStyle()}>
                     {title}
-                    <button onClick={this.props.delTodo.bind(this, id)} style={btnStyle}>x</button>
                 </p>
+                <div style={{ float: 'right', display: 'inline-block', height: '100%', }}>
+                    <IconButton icon="trash" intent="danger" onClick={this.props.delTodo.bind(this, id)} ></IconButton>
+                </div>
             </div>
         )
     }
 }
 
-const btnStyle = {
-    background: '#ff0000',
-    color: '#fff',
-    border: 'none',
-    padding: '5px 9px',
-    borderRadius: '50%',
-    cursor: 'pointer',
-    float: 'right'
-}
 
 // PropTypes
 TodoItem.propTypes = {
