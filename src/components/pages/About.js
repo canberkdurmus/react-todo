@@ -5,8 +5,7 @@ export default function About() {
     return (
         <div style={{textAlign: 'center'}} >
             <h1>About</h1>
-            <p>This is the To Do List sinle page web application v0.0.1</p>
-            <p>React</p>
+            <p>The ugliest react to do list app of the world. Runs on a mock Rest API.</p>
         </div>
     )
 }
